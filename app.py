@@ -14,8 +14,6 @@ if selected == "Clustering":
 if selected == "About":
     st.title(f"It'Me")
 
-st.write("Hello world")
-st.button("Button")
 
 
 
@@ -33,4 +31,4 @@ st.write(df)
 
 # Create a selectbox for column selection
 selected_column = st.multiselect('Select a column', df.columns)
-st.write("Hello world")
+st.button("Clustering")
