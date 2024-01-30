@@ -21,12 +21,9 @@ st.button("Button")
 
 # Sample dataframe
 data = {
-    'Name': ['Alice', 'Bob', 'Charlie'],
-    'Age': [30, 25, 35],
+    'Nama': ['Alice', 'Bob', 'Charlie'],
+    'Umur': [30, 25, 35],
     'Gender': ['Female', 'Male', 'Male'],
-    'Gender': ['Female', 'Male', 'Male'],
-    'Gender': ['Female', 'Male', 'Male'],
-    'Gender': ['Female', 'Male', 'Male']
 }
 
 df = pd.DataFrame(data)
