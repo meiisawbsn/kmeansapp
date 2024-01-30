@@ -23,6 +23,9 @@ st.button("Button")
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
     'Age': [30, 25, 35],
+    'Gender': ['Female', 'Male', 'Male'],
+    'Gender': ['Female', 'Male', 'Male'],
+    'Gender': ['Female', 'Male', 'Male'],
     'Gender': ['Female', 'Male', 'Male']
 }
 
