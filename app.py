@@ -14,6 +14,7 @@ if selected == "Clustering":
 if selected == "About":
     st.title(f"It'Me")
 
+upFile = st.file_uploader("Choose a File")
 # Sample dataframe
 data = {
     'Nama': ['Alice', 'Bob', 'Charlie'],
