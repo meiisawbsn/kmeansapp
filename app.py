@@ -19,9 +19,10 @@ if upFile is not None:
     dataframe = pd.read_csv(upFile,delimiter=';')
     st.write(dataframe)
 
-    st.write(dataframe.isna().sum())
+    # st.write(dataframe.isna().sum())
+
     # Create a selectbox for column selection
-    selected_column = st.multiselect('Select a column', dataframe.columns)
-    x = dataframe.iloc[:, [selected_column]].values
-    st.write(x)
+    selected_columns = st.multiselect('Select a column', dataframe.columns)
+    selected_data = dataframe[selected_columns]
+    st.write(selected_data)
     st.button("Clustering")
