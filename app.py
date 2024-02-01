@@ -18,6 +18,10 @@ upFile = st.file_uploader("Choose a File", type=["csv"])
 if upFile is not None:
     dataframe = pd.read_csv(upFile,delimiter=';')
     st.write(dataframe)
+
+    st.write(dataframe.isna().sum())
     # Create a selectbox for column selection
     selected_column = st.multiselect('Select a column', dataframe.columns)
+    x = dataframe.iloc[:, [selected_column]].values
+    st.write(x)
     st.button("Clustering")
