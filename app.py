@@ -19,12 +19,6 @@ if upFile is not None:
     dataframe = pd.read_csv(upFile)
     st.write(dataframe)
 
-
-df = pd.DataFrame(dataframe)
-
-# Display dataframe
-st.write(df)
-
 # Create a selectbox for column selection
-selected_column = st.multiselect('Select a column', df.columns)
+selected_column = st.multiselect('Select a column', dataframe.columns)
 st.button("Clustering")
