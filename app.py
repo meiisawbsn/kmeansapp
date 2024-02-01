@@ -23,7 +23,7 @@ if upFile is not None:
 
     # Create a selectbox for column selection
     selected_columns = st.multiselect('Select a column', dataframe.columns)
-    if selected_columns is not None:
+    if selected_columns :
         selected_data = dataframe[selected_columns]
         st.write(selected_data)
         st.button("Clustering")
