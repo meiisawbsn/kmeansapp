@@ -15,9 +15,9 @@ if selected == "About":
     st.title(f"It'Me")
 
 upFile = st.file_uploader("Choose a File")
-if upFile is not None:
-    dataframe = pd.read_csv(upFile)
-    st.write(dataframe)
+
+dataframe = pd.read_csv(upFile)
+st.write(dataframe)
 
 # Create a selectbox for column selection
 selected_column = st.multiselect('Select a column', dataframe.columns)
