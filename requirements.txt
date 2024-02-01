@@ -3,3 +3,7 @@ charset-normalizer
 idna
 urllib3
 streamlit-option-menu
+numpy 
+sklearn.cluster
+matplotlib.pyplot
+sklearn.metrics
