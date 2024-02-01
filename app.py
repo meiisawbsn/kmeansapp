@@ -19,14 +19,8 @@ if upFile is not None:
     dataframe = pd.read_csv(upFile)
     st.write(dataframe)
 
-# Sample dataframe
-data = {
-    'Nama': ['Alice', 'Bob', 'Charlie'],
-    'Umur': [30, 25, 35],
-    'Gender': ['Female', 'Male', 'Male'],
-}
 
-df = pd.DataFrame(data)
+df = pd.DataFrame(dataframe)
 
 # Display dataframe
 st.write(df)
