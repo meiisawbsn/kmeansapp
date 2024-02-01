@@ -15,6 +15,11 @@ if selected == "About":
     st.title(f"It'Me")
 
 upFile = st.file_uploader("Choose a File")
+if upFile is not None:
+    # To read file as bytes:
+    bytes_data = upFile.getvalue()
+    st.write(bytes_data)
+
 # Sample dataframe
 data = {
     'Nama': ['Alice', 'Bob', 'Charlie'],
