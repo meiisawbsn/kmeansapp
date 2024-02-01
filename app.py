@@ -1,3 +1,4 @@
+import base64
 import numpy as np
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -41,7 +42,7 @@ def perform_clustering(selected_data, n_clusters, iteration):
 
 def map_cluster_labels(df):
     cluster_mapping = {1: 'Layak', 0: 'Tidak Layak'}
-    df['Cluster_Text'] = df['Cluster'].map(cluster_mapping)
+    df['HASIL'] = df['Cluster'].map(cluster_mapping)
     return df
 
 def calculate_dbi(selected_data, labels):
@@ -81,8 +82,8 @@ if upFile is not None:
 
         for i in range(1, num_iterations + 1):
             clustered_data  = perform_clustering(selected_data, k, i)
-        for i in range(1, num_iterations + 1):
-            cluster_centers  = perform_clustering(selected_data, k, i)
+        # for i in range(1, num_iterations + 1):
+        #     cluster_centers  = perform_clustering(selected_data, k, i)
 
         kmeans = KMeans(n_clusters = 2, init = 'k-means++', random_state = None)
         y_kmeans = kmeans.fit_predict(selected_data)
@@ -100,3 +101,11 @@ if upFile is not None:
         st.title("Clustering Result")
         clustered_data = map_cluster_labels(clustered_data)
         st.write(clustered_data)
+
+        csv = clustered_data.to_csv(index=False).encode('utf-8')
+
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='Clustering_result.csv',
+            mime='text/csv')
