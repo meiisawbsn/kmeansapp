@@ -40,5 +40,5 @@ if upFile is not None:
         plt.xlabel('Cluster Number')
         plt.ylabel('WCSS')
         plt.show()
-        
+
         st.button("Clustering")
