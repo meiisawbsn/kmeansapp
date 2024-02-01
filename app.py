@@ -39,6 +39,6 @@ if upFile is not None:
         plt.title('Elbow Method')
         plt.xlabel('Cluster Number')
         plt.ylabel('WCSS')
-        plt.show()
+        st.write(plt.show())
 
         st.button("Clustering")
