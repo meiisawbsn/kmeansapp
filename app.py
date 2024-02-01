@@ -16,9 +16,8 @@ if selected == "About":
 
 upFile = st.file_uploader("Choose a File")
 if upFile is not None:
-    # To read file as bytes:
-    bytes_data = upFile.getvalue()
-    st.write(bytes_data)
+    dataframe = pd.read_csv(upFile)
+    st.write(dataframe)
 
 # Sample dataframe
 data = {
