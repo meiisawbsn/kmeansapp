@@ -3,8 +3,22 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
+from sklearn.metrics import silhouette_score
 
 st.title("K-MEANS")
+
+def plot_elbow_method(selected_data):
+    wcss = []
+    for i in range(1, 10):
+        kmeans = KMeans(n_clusters=i, init='k-means++', random_state=None)
+        kmeans.fit(selected_data)
+        wcss.append(kmeans.inertia_)
+
+    plt.plot(range(1, 10), wcss)
+    plt.title('Elbow Method')
+    plt.xlabel('Number of Clusters')
+    plt.ylabel('WCSS')  # Within cluster sum of squares
+    return plt
 
 with st.sidebar:
     selected = option_menu("MENU", ["Home",'Clustering','About'], 
@@ -28,17 +42,11 @@ if upFile is not None:
     if selected_columns :
         selected_data = dataframe[selected_columns]
         st.write(selected_data)
-        wcss = []
-
-        for i in range(2,11):
-            kmeans = KMeans(n_clusters= i, init = 'k-means++', random_state = None)
-            kmeans.fit(selected_data)
-            wcss.append(kmeans.inertia_)
-            
-        plt.plot(range(2,11), wcss)
-        plt.title('Elbow Method')
-        plt.xlabel('Cluster Number')
-        plt.ylabel('WCSS')
-        st.pyplot()
-
-        st.button("Clustering")
+        
+        fig = plot_elbow_method(selected_data)
+        st.pyplot(fig)
+        
+        kmeans = KMeans(n_clusters = 2, init = 'k-means++', random_state = None)
+        y_kmeans = kmeans.fit_predict(selected_data)
+        silhouette_score_average = silhouette_score(selected_data, y_kmeans)
+        st.write("silhouette Score 2 kluster =", silhouette_score_average)
