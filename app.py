@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
 
 st.title("K-MEANS")
 
@@ -26,4 +28,17 @@ if upFile is not None:
     if selected_columns :
         selected_data = dataframe[selected_columns]
         st.write(selected_data)
+        wcss = []
+
+        for i in range(2,11):
+            kmeans = KMeans(n_clusters= i, init = 'k-means++', random_state = None)
+            kmeans.fit(selected_data)
+            wcss.append(kmeans.inertia_)
+            
+        plt.plot(range(2,11), wcss)
+        plt.title('Elbow Method')
+        plt.xlabel('Cluster Number')
+        plt.ylabel('WCSS')
+        plt.show()
+        
         st.button("Clustering")
