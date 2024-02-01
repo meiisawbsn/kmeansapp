@@ -102,10 +102,12 @@ if upFile is not None:
         clustered_data = map_cluster_labels(clustered_data)
         st.write(clustered_data)
 
-        csv = clustered_data.to_csv(index=False).encode('utf-8')
+        if st.button('Export to Excel'):
+            excel_filename = "clustering_result.xlsx"
+            with pd.ExcelWriter(excel_filename, engine='xlsxwriter') as writer:
+                clustered_data.to_excel(writer, index=False, sheet_name='Clustering Result')
+            st.success(f"Clustering result exported to {excel_filename}")
 
-        st.download_button(
-            label="Download data as CSV",
-            data=csv,
-            file_name='Clustering_result.csv',
-            mime='text/csv')
+        
+
+    
