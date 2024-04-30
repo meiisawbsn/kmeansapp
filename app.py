@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import silhouette_score,davies_bouldin_score
 
 st.title("K-MEANS")
-st.title("Yang belum : ")
-st.title("- Euclidean Distance")
-st.title("- Pembobotan")
+# st.title("Yang belum : ")
+# st.title("- Euclidean Distance")
+# st.title("- Pembobotan")
 
 def plot_elbow_method(selected_data):
     wcss = []
@@ -105,9 +105,6 @@ if upFile is not None:
         if st.button('Export to Excel'):
             excel_filename = "clustering_result.xlsx"
             with pd.ExcelWriter(excel_filename, engine='xlsxwriter') as writer:
-                clustered_data.to_excel(writer, index=False, sheet_name='Clustering Result')
+                excel = clustered_data.to_excel(writer, index=False, sheet_name='Clustering Result')
             st.success(f"Clustering result exported to {excel_filename}")
-
-        
-
-    
+            # st.download_button("Download Excel file", data=excel )
