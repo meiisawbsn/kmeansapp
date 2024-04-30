@@ -4,5 +4,5 @@ idna
 urllib3
 streamlit-option-menu
 numpy 
-sklearn
+scikit-learn
 matplotlib
